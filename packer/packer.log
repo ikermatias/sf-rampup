@@ -1,0 +1,76 @@
+[1;32mamazon-ebs: output will be in this color.[0m
+
+[1;32m==> amazon-ebs: Prevalidating any provided VPC information[0m
+[1;32m==> amazon-ebs: Prevalidating AMI Name: jenkinsVM-1600728659[0m
+[0;32m    amazon-ebs: Found Image ID: ami-0c94855ba95c71c99[0m
+[1;32m==> amazon-ebs: Creating temporary keypair: packer_5f692e53-5c2c-ceb2-8eec-993330486e87[0m
+[1;32m==> amazon-ebs: Creating temporary security group for this instance: packer_5f692e58-8999-7bea-41ed-d19f8dc7315d[0m
+[1;32m==> amazon-ebs: Authorizing access to port 22 from [0.0.0.0/0] in the temporary security groups...[0m
+[1;32m==> amazon-ebs: Launching a source AWS instance...[0m
+[1;32m==> amazon-ebs: Adding tags to source instance[0m
+[0;32m    amazon-ebs: Adding tag: "Name": "Packer (jenkinsVM-1600728659)"[0m
+[0;32m    amazon-ebs: Adding tag: "CreatedBY": "JSGD"[0m
+[0;32m    amazon-ebs: Instance ID: i-0326c4d64eea54711[0m
+[1;32m==> amazon-ebs: Waiting for instance (i-0326c4d64eea54711) to become ready...[0m
+[1;32m==> amazon-ebs: Using ssh communicator to connect: 34.238.252.148[0m
+[1;32m==> amazon-ebs: Waiting for SSH to become available...[0m
+[1;32m==> amazon-ebs: Connected to SSH![0m
+[1;32m==> amazon-ebs: Provisioning with Ansible...[0m
+[0;32m    amazon-ebs: Setting up proxy adapter for Ansible....[0m
+[1;32m==> amazon-ebs: Executing Ansible: ansible-playbook -e packer_build_name="amazon-ebs" -e packer_builder_type=amazon-ebs --ssh-extra-args '-o IdentitiesOnly=yes' -e ansible_ssh_private_key_file=/tmp/ansible-key053714934 -i /tmp/packer-provisioner-ansible278287581 /home/sebastian/Documentos/sf-rampup/ansible/jenkins.yml[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: PLAY [Install and Configure Jenkins] *******************************************[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [Gathering Facts] *********************************************************[0m
+[0;32m    amazon-ebs: [WARNING]: Platform linux on host default is using the discovered Python[0m
+[0;32m    amazon-ebs: ok: [default][0m
+[0;32m    amazon-ebs: interpreter at /usr/bin/python, but future installation of another Python[0m
+[0;32m    amazon-ebs: interpreter could change this. See https://docs.ansible.com/ansible/2.9/referen[0m
+[0;32m    amazon-ebs: ce_appendices/interpreter_discovery.html for more information.[0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [jenkins : Install Pre-requisitesJenkins] *********************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [jenkins : Dowload Jenkins Repo] ******************************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [jenkins : Import Key] ****************************************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [jenkins : Update repos] **************************************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: TASK [jenkins : Install Jenkins] ***********************************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: RUNNING HANDLER [jenkins : restart jenkins] ************************************[0m
+[0;32m    amazon-ebs: changed: [default][0m
+[0;32m    amazon-ebs:[0m
+[0;32m    amazon-ebs: PLAY RECAP *********************************************************************[0m
+[0;32m    amazon-ebs: default                    : ok=7    changed=6    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0[0m
+[0;32m    amazon-ebs:[0m
+[1;32m==> amazon-ebs: Stopping the source instance...[0m
+[0;32m    amazon-ebs: Stopping instance[0m
+[1;32m==> amazon-ebs: Waiting for the instance to stop...[0m
+[1;32m==> amazon-ebs: Creating AMI jenkinsVM-1600728659 from instance i-0326c4d64eea54711[0m
+[0;32m    amazon-ebs: AMI: ami-002d6b3352027ca09[0m
+[1;32m==> amazon-ebs: Waiting for AMI to become ready...[0m
+[1;32m==> amazon-ebs: Adding tags to AMI (ami-002d6b3352027ca09)...[0m
+[1;32m==> amazon-ebs: Tagging snapshot: snap-0b978102983cd2a38[0m
+[1;32m==> amazon-ebs: Creating AMI tags[0m
+[0;32m    amazon-ebs: Adding tag: "CreatedBY": "JSGD"[0m
+[0;32m    amazon-ebs: Adding tag: "Name": "jenkinsVM-1600728659"[0m
+[1;32m==> amazon-ebs: Creating snapshot tags[0m
+[1;32m==> amazon-ebs: Terminating the source AWS instance...[0m
+[1;32m==> amazon-ebs: Cleaning up any extra volumes...[0m
+[1;32m==> amazon-ebs: No volumes to clean up, skipping[0m
+[1;32m==> amazon-ebs: Deleting temporary security group...[0m
+[1;32m==> amazon-ebs: Deleting temporary keypair...[0m
+[1;32mBuild 'amazon-ebs' finished after 4 minutes 50 seconds.[0m
+
+==> Wait completed after 4 minutes 50 seconds
+
+==> Builds finished. The artifacts of successful builds are:
+--> amazon-ebs: AMIs were created:
+us-east-1: ami-002d6b3352027ca09
+
