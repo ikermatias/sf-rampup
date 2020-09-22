@@ -16,6 +16,10 @@ def sendFailureEmail() {
 
 node() {
     try{
+
+        enviroment {
+            ecrUri = "382356559478.dkr.ecr.us-east-1.amazonaws.com"
+        }
         stage("Setup"){
             checkout scm
         }
@@ -31,12 +35,14 @@ node() {
             }
         }
         stage("Build Docker image"){
-            dockerImage = docker.build("382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback")
+            dockerImage = docker.build("${ecrUri}/jsgd/demoback")
         }
         stage("Push Docker image"){
-            docker.withRegistry('https://382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback',''){
-                dockerImage.push();
+                script {
+                sh("aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ecrUri}")
                 dockerImage.push('latest')
+                }
+                
             }
 
 
