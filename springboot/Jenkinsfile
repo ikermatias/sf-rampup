@@ -19,6 +19,7 @@ node() {
         stage("Setup"){
             checkout scm
         }
+        dir("springboot"){
         stage("Test") {
             withMaven(maven: 'maven', jdk: 'jdk') {
                 sh("mvn clean test -U")
@@ -29,6 +30,7 @@ node() {
                 sh(" mvn clean package")
             }
         }
+    }
     } catch(error) {
         throw error
 		sendFailureEmail()
