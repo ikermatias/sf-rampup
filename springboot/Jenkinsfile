@@ -34,7 +34,7 @@ node() {
             dockerImage = docker.build("382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback")
         }
         stage("Push Docker image"){
-            docker.withRegistry('https://382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback','ecr:us-east-1'){
+            docker.withRegistry('https://382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback',''){
                 dockerImage.push();
                 dockerImage.push('latest')
             }
