@@ -17,9 +17,9 @@ def sendFailureEmail() {
 node() {
     try{
 
-        enviroment {
-            ecrUri = "382356559478.dkr.ecr.us-east-1.amazonaws.com"
-        }
+        
+         def ecrUri = "382356559478.dkr.ecr.us-east-1.amazonaws.com"
+        
         stage("Setup"){
             checkout scm
         }
