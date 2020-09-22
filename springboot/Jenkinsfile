@@ -25,10 +25,21 @@ node() {
                 sh("mvn clean test -U")
             }
         }
-        stage("Build") {
+        stage("Build JAR artifact") {
             withMaven(maven: 'maven', jdk: 'jdk') {
                 sh(" mvn clean package")
             }
+        }
+        stage("Build Docker image"){
+            dockerImage = docker.build("382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback")
+        }
+        stage("Push Docker image"){
+            docker.withRegistry('https://382356559478.dkr.ecr.us-east-1.amazonaws.com/jsgd/demoback','ecr:us-east-1'){
+                dockerImage.push();
+                dockerImage.push('latest')
+            }
+
+
         }
     }
     } catch(error) {
