@@ -13,6 +13,9 @@ The second file describe all varaibles values configured in jenkinsVM.json.
   
 Run  ```  packer build -var-file=<path_to_vars_value_file>  ``` for build the image.  
 Also you could add ``` | tee packer.log ``` for storage execution log.
+  
+TODO FOR MACHINE: Docker install, Mvn Configuration, jdk configuration.  
+
 
 ## Creating Terraform
 otrocambio little changene
