@@ -50,7 +50,9 @@ node() {
         dir("helm"){
         
         stage("Deploy with Helm"){
-           
+            
+            sh("echo $HOME")
+            sh("kubectl config view --raw >~/.kube/config")
             sh("helm install demoback .")
         }
             
