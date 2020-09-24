@@ -21,3 +21,10 @@ module "jenkinsec2" {
   associate_public_ip_address = true
   vpc_id                      = data.aws_vpc.default.id
 }
+
+module "ekscluster" {
+  source = "./modules/ekscluster"
+  name = "ekscluster"
+  subnet_ids =  slice(tolist(data.aws_subnet_ids.all.ids),0,2)
+
+}
