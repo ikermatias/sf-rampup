@@ -55,7 +55,7 @@ node() {
             sh("mkdir -p ~/.kube")
             sh("kubectl config view --raw > ~/.kube/config")
             sh("export KUBECONFIG=~/.kube/config")
-            sh("helm install demoback .")
+            sh("helm install demoback . -v20")
         }
             
 
