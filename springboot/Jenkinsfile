@@ -50,10 +50,7 @@ node() {
         dir("helm"){
         
         stage("Deploy with Helm"){
-            sh("pwd")
-            sh("ls")
-            sh("echo $PATH")
-            sh("helm install --debug --dry-run demoback .")
+           
             sh("helm install demoback templates")
         }
             
