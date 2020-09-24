@@ -51,7 +51,7 @@ node() {
         
         stage("Deploy with Helm"){
             sh("echo $PATH")
-            sh("helm install --name jsgd/demoback templates/")
+            sh("helm install jsgd/demoback templates/")
         }
             
 
