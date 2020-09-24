@@ -54,7 +54,6 @@ node() {
             sh("ls")
             sh("echo $PATH")
             sh("helm install --debug --dry-run demoback templates")
-)
             sh("helm install demoback templates")
         }
             
