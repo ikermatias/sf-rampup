@@ -55,7 +55,10 @@ node() {
             sh("kubectl config view --raw")
             sh("cat ~/.kube/config")
             sh("export KUBECONFIG=~/.kube/config")
-            sh("helm install demoback . -v20")
+            sh("whoami")
+            sh("sudo su ec2-user")
+            sh("whoami")
+            sh("helm upgrade demoback . -v20")
         }
             
 
