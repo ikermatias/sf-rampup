@@ -50,6 +50,8 @@ node() {
         dir("helm"){
         
         stage("Deploy with Helm"){
+            sh("pwd")
+            sh("ls")
             sh("echo $PATH")
             sh("helm install jsgd/demoback templates/")
         }
