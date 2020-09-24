@@ -18,7 +18,7 @@ node() {
     try{
 
         
-         def ecrUri = "382356559478.dkr.ecr.us-east-1.amazonaws.com"
+       def ecrUri = "382356559478.dkr.ecr.us-east-1.amazonaws.com"
         
         stage("Setup"){
             checkout scm
@@ -44,6 +44,15 @@ node() {
                 }
                 
             }
+
+
+        }
+        dir("helm"){
+        
+        stage("Deploy with Helm"){
+            sh("helm install --name jsgd/demoback templates/")
+        }
+            
 
 
         }
